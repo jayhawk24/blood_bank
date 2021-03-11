@@ -68,6 +68,7 @@ if (isset($_POST['loginUser'])) {
   	$results = mysqli_query($mysqli, $query) or trigger_error("Query Failed! SQL: $query - Error: ".mysqli_error($mysqli), E_USER_ERROR);
   	if (mysqli_num_rows($results) == 1) {
   	  $_SESSION['username'] = $username;
+      $_SESSION['userType'] = $regType;
   	  $_SESSION['success'] = "You are now logged in";
   	  header('location: index.php');
   	}else {

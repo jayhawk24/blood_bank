@@ -62,7 +62,7 @@
             <th scope="col">Blood Group</th>
             <th scope="col">Quantity</th>
             <th>
-              <a href="requestSamples.html">
+              <a href="requestSamples.php">
                 <button class="btn btn-primary">
                   <nobr> Request Sample </nobr>
                 </button>
@@ -71,24 +71,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>joe</td>
-            <td>@twitter</td>
-          </tr>
+          <?php include('server/getSamples.php'); ?>
         </tbody>
       </table>
     </div>
