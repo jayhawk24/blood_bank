@@ -30,15 +30,15 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="login.html"
+              <a class="nav-link" aria-current="page" href="login.php"
                 >Login</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="register.html">Register</a>
+              <a class="nav-link" href="register.php">Register</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="addInfo.html">Add Info</a>
+              <a class="nav-link active" href="addInfo.php">Add Info</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="availableSamples.html"
@@ -46,12 +46,39 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="viewRequests.html">View Requests</a>
+              <a class="nav-link" href="viewRequests.php">View Requests</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
+
+    <div class="container-sm mt-4">
+      <h2>Add Samples</h2>
+      <form>
+        <div class="mb-3">
+          <select
+            class="form-select form-select-sm"
+            aria-label=".form-select-sm example"
+          >
+            <option selected disabled>Select Blood Group</option>
+            <option value="1">A RhD positive (A+)</option>
+            <option value="2">A RhD negative (A-)</option>
+            <option value="3">B RhD positive (B+)</option>
+            <option value="4">B RhD negative (B-)</option>
+            <option value="5">O RhD positive (O+)</option>
+            <option value="6">O RhD negative (O-)</option>
+            <option value="7">AB RhD positive (AB+)</option>
+            <option value="8">AB RhD negative (AB-)</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="quantity" class="form-label">Quantity (Bottles)</label>
+          <input type="number" class="form-control" id="quantity" />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
     <!-- JavaScript Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"

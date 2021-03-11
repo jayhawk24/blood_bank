@@ -1,3 +1,4 @@
+<?php include('server/server.php') ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,15 +31,15 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="login.html"
+              <a class="nav-link active" aria-current="page" href="login.php"
                 >Login</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="register.html">Register</a>
+              <a class="nav-link" href="register.php">Register</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="addInfo.html">Add Info</a>
+              <a class="nav-link" href="addInfo.php">Add Info</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="availableSamples.html"
@@ -46,20 +47,23 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="viewRequests.html">View Requests</a>
+              <a class="nav-link" href="viewRequests.php">View Requests</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
     <div class="container-sm mt-5">
-      <form>
+      <form method="post" action="register.php">
+        
+
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label"
             >Username / E-mail</label
           >
           <input
-            type="email"
+          name="username"
+          type="email"
             class="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
@@ -71,6 +75,7 @@
         <div class="mb-3 d-inline">
           <label for="name" class="form-label">Name</label>
           <input
+          name="name"
             type="text"
             class="form-control"
             id="name"
@@ -79,6 +84,7 @@
           <div id="bloodGroup" class="">
             <label for="bloodGroup" class="form-label">Blood Group</label>
             <input
+          name="bloodGroup"
               type="text"
               class="form-control"
               id="bloodGroupInput"
@@ -89,6 +95,7 @@
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Password</label>
           <input
+          name="pass"
             type="password"
             class="form-control"
             id="exampleInputPassword1"
@@ -99,6 +106,7 @@
             >Confirm Password</label
           >
           <input
+          name="confirmPass"
             type="password"
             class="form-control"
             id="exampleInputPassword1"
@@ -111,7 +119,7 @@
               type="radio"
               name="regType"
               id="regTypeH"
-              value="hospital"
+              value="hospitals"
               onclick="checkType()"
             />
             <label class="form-check-label" for="flexRadioDefault1">
@@ -134,8 +142,13 @@
           </div>
         </div>
         <div class="mb-3">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary" name="registerUser">
+            Submit
+          </button>
         </div>
+
+        <?php include("server/errors.php") ?>
+        
       </form>
     </div>
 

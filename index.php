@@ -30,15 +30,15 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="login.html"
+              <a class="nav-link active" aria-current="page" href="login.php"
                 >Login</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="register.html">Register</a>
+              <a class="nav-link" href="register.php">Register</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="addInfo.html">Add Info</a>
+              <a class="nav-link" href="addInfo.php">Add Info</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="availableSamples.html"
@@ -46,7 +46,7 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="viewRequests.html">View Requests</a>
+              <a class="nav-link" href="viewRequests.php">View Requests</a>
             </li>
           </ul>
         </div>

@@ -1,0 +1,452 @@
+mysql
+ERROR 1045 (28000): Access denied for user 'jayhawk'@'localhost' (using password: NO)
+❯ mysql -u root -p
+Enter password: 
+ERROR 1698 (28000): Access denied for user 'root'@'localhost'
+❯ sudo mysql -u root -p
+[sudo] password for jayhawk: 
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.23-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> 
+
+
+
+
+
+
+
+
+
+
+
+mysql> CREATE DATABASE blog CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+Query OK, 1 row affected (0.16 sec)
+
+mysql> CREATE USER 'bloodApiUser'@'localhost' identified by 'superSecurePassword'
+    -> ;
+;
+^C
+mysql> CREATE USER 'bloodApiUser'@'localhost' identified by 'superSecurePassword';
+Query OK, 0 rows affected (0.58 sec)
+
+mysql> drop database blog
+    -> ;
+Query OK, 0 rows affected (0.55 sec)
+
+mysql> create database CREATE USER 'bloodBankAdmin'@'localhost' identified by 'superSecurePassword';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CREATE USER 'bloodBankAdmin'@'localhost' identified by 'superSecurePassword'' at line 1
+mysql> 
+
+
+
+
+
+
+
+
+
+
+mysql> CREATE DATABASE blog CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;^C^C^C
+
+^C
+mysql> create user 'bloodBankAdmin'@'localhost' identified by 'securePassword';
+Query OK, 0 rows affected (0.53 sec)
+
+mysql> create database bloodBank CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+Query OK, 1 row affected (0.74 sec)
+
+mysql> grant all on bloodBank.* to 'bloodBankAdmin'@'localhost';
+Query OK, 0 rows affected (0.51 sec)
+
+mysql> exit
+Bye
+❯ mysql -u bloodBankAdmin -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.23-0ubuntu0.20.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> 
+
+
+mysql> use bloodBank
+Database changed
+mysql> create Table `samples` (
+    -> `id` int(11) not Null AUTO_INCREMENT,
+    -> `title` varchar(255) NOT NULL,
+    -> PRIMARY KEY (`id`)
+    -> );
+Query OK, 0 rows affected, 1 warning (0.89 sec)
+
+mysql> CREATE TABLE 'hospitals' (
+    -> 'id' int(11) NOT NULL AUTO_INCREMENT,
+    -> 'title' VARCHAR(255) NOT NULL,
+    -> 'username' varchar(255) not null,
+    -> 'password' varchar(30) not null,
+    -> PRIMARY KEY('id')
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''hospitals' (
+'id' int(11) NOT NULL AUTO_INCREMENT,
+'title' VARCHAR(255) NOT NUL' at line 1
+mysql> CREATE TABLE `hospitals` (
+    -> `id` int(11) NOT NULL AUTO_INCREMENT,
+    -> `title` VARCHAR(255) NOT NULL,
+    -> `username` varchar(255) not null,
+    -> `password` varchar(30) not null,
+    -> PRIMARY KEY (`id`)
+    -> );
+Query OK, 0 rows affected, 1 warning (1.06 sec)
+
+mysql> create table `hospitalSamples` (
+    -> `hospitalId` int(11) not null,
+    -> `sampleId` int(11) not null,
+    -> 
+    -> Foreign key (hospitalId) references hospitals(id),
+    -> foreign key (sampleId) references samples(id),
+    -> unique(hospitalId,sampleId)
+    -> );
+Query OK, 0 rows affected, 2 warnings (0.90 sec)
+
+mysql> drop table hospitalSamples
+    -> ;
+Query OK, 0 rows affected (0.46 sec)
+
+mysql> create table `hospitalSamples` ( `hospitalId` int(11) not null, `sampleId` int(11) not null, `quantity` int(99) not null ,  Foreign key (hospitalId) refe
+rences hospitals(id), foreign key (sampleId) references samples(id), unique(hospitalId,sampleId) );
+Query OK, 0 rows affected, 3 warnings (0.82 sec)
+
+mysql> drop table hospitalSamples;
+Query OK, 0 rows affected (0.79 sec)
+
+mysql> create table `hospitalSamples` ( `hospitalId` int(11) not null, `sampleId` int(11) not null, `quantity` int(99) default 0 ,  Foreign key (hospitalId) ref
+erences hospitals(id), foreign key (sampleId) references samples(id), unique(hospitalId,sampleId) );
+Query OK, 0 rows affected, 3 warnings (1.86 sec)
+
+mysql> create table `reciever` (
+    `id` int(11) not null,
+    `title` varchar(255) not null,
+    `username` varchar(255) not null,
+    `password` varchar(255) not null,
+    `bloodGroup` int(11) not null,
+
+    primary key(id),
+    Foreign key (bloodGroup) references samples(id)
+    );
+Query OK, 0 rows affected, 1 warning (1.35 sec)
+
+mysql> create table `requests`(
+    `recieverId` int(11) not null,
+    `sampleId` int(11) not null,
+    `hospitalId` int(11) not null,
+    `quantity` int(99) not null,
+    
+    Foreign key (recieverId) references reciever(id),
+    Foreign key (sampleId) references samples(id),
+    Foreign key (hospitalId) references hospitals(id),
+    unique(recieverId,sampleId,hospitalId)
+    );
+Query OK, 0 rows affected, 4 warnings (2.02 sec)
+
+mysql> show tables;
++---------------------+
+| Tables_in_bloodBank |
++---------------------+
+| hospitalSamples     |
+| hospitals           |
+| reciever            |
+| requests            |
+| samples             |
++---------------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from reciever;
+Empty set (0.02 sec)
+
+mysql> select * from reciever;
+Empty set (0.00 sec)
+
+mysql> select * from hospitals;
+Empty set (0.01 sec)
+
+mysql> select * from hospitals;
+Empty set (0.00 sec)
+
+mysql> insert into samples (title) values('A RhD positive (A+)');
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into samples (title) values('A RhD negative (A-)')
+    -> insert into samples (title) values('B RhD positive (B+)')
+    -> insert into samples (title) values('B RhD negative (B-)')
+    -> insert into samples (title) values('O RhD positive (O+)')
+    -> insert into samples (title) values('O RhD negative (O-)')
+    -> insert into samples (title) values('AB RhD positive (AB+)')
+    -> insert into samples (title) values('AB RhD negative (AB-)')^C^C^C^C^C^C^C
+
+^C
+mysql> insert into samples (title) values('A RhD negative (A-)');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert into samples (title) values('B RhD positive (B+)');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into samples (title) values('B RhD negative (B-)');
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into samples (title) values('O RhD positive (O+)');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into samples (title) values('O RhD negative (O-)');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into samples (title) values('AB RhD positive (AB+)');
+Query OK, 1 row affected (0.16 sec)
+
+mysql> insert into samples (title) values('AB RhD negative (AB-)');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> select * from samples
+    -> ;
++----+-----------------------+
+| id | title                 |
++----+-----------------------+
+|  1 | A RhD positive (A+)   |
+|  2 | A RhD negative (A-)   |
+|  3 | B RhD positive (B+)   |
+|  4 | B RhD negative (B-)   |
+|  5 | O RhD positive (O+)   |
+|  6 | O RhD negative (O-)   |
+|  7 | AB RhD positive (AB+) |
+|  8 | AB RhD negative (AB-) |
++----+-----------------------+
+8 rows in set (0.00 sec)
+
+mysql> drop table recievers;
+ERROR 1051 (42S02): Unknown table 'bloodBank.recievers'
+mysql> drop table reciever;
+ERROR 3730 (HY000): Cannot drop table 'reciever' referenced by a foreign key constraint 'requests_ibfk_1' on table 'requests'.
+mysql> alter table reciever add 
+mysql> alter table reciever add bloodGroup int(11) not null ;
+Query OK, 0 rows affected, 1 warning (0.88 sec)
+Records: 0  Duplicates: 0  Warnings: 1
+
+mysql> alter table reciever add constraint bloodGroupId foreign Key (bloodGroup) References samples(id)
+    -> ;
+Query OK, 0 rows affected (2.10 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from reciever;
+Empty set (0.01 sec)
+
+mysql> insert into reciever (title,username,password,bloodGroup) values($^C^C
+
+^C
+mysql> select bloodGroup from reciever;
+Empty set (0.00 sec)
+
+mysql> select bloodGroupId from reciever;
+ERROR 1054 (42S22): Unknown column 'bloodGroupId' in 'field list'
+mysql> select bloodGroup from reciever;
+Empty set (0.00 sec)
+
+mysql> select bloodGroup from reciever;expl^C^C
+
+^C
+mysql> explain bloodGroup
+    -> ;
+ERROR 1146 (42S02): Table 'bloodBank.bloodGroup' doesn't exist
+mysql> ;
+ERROR: 
+No query specified
+
+mysql> explain receiver;
+ERROR 1146 (42S02): Table 'bloodBank.receiver' doesn't exist
+mysql> explain receivers;
+ERROR 1146 (42S02): Table 'bloodBank.receivers' doesn't exist
+mysql> explain receiver;
+ERROR 1146 (42S02): Table 'bloodBank.receiver' doesn't exist
+mysql> explain reciever;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| id         | int          | NO   | PRI | NULL    |       |
+| title      | varchar(255) | NO   |     | NULL    |       |
+| username   | varchar(255) | NO   |     | NULL    |       |
+| password   | varchar(30)  | NO   |     | NULL    |       |
+| bloodGroup | int          | NO   | MUL | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> explain samples;
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| id    | int          | NO   | PRI | NULL    | auto_increment |
+| title | varchar(255) | NO   |     | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> alter table reciever modify column bloodGroup varchar(255);
+ERROR 3780 (HY000): Referencing column 'bloodGroup' and referenced column 'id' in foreign key constraint 'bloodGroupId' are incompatible.
+mysql> alter table reciever modify column password varchar(255);
+Query OK, 0 rows affected (2.43 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> explain reciever;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| id         | int          | NO   | PRI | NULL    |       |
+| title      | varchar(255) | NO   |     | NULL    |       |
+| username   | varchar(255) | NO   |     | NULL    |       |
+| password   | varchar(255) | YES  |     | NULL    |       |
+| bloodGroup | int          | NO   | MUL | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> alter table reciever modify column hospitals varchar(255);
+ERROR 1054 (42S22): Unknown column 'hospitals' in 'reciever'
+mysql> alter table hospitals modify column password varchar(255);
+Query OK, 0 rows affected (2.21 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> explain hospitals;
++----------+--------------+------+-----+---------+----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------+--------------+------+-----+---------+----------------+
+| id       | int          | NO   | PRI | NULL    | auto_increment |
+| title    | varchar(255) | NO   |     | NULL    |                |
+| username | varchar(255) | NO   |     | NULL    |                |
+| password | varchar(255) | YES  |     | NULL    |                |
++----------+--------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+mysql> alter table reciever modify column hospitals varchar(255) not null;
+ERROR 1054 (42S22): Unknown column 'hospitals' in 'reciever'
+mysql> alter table reciever modify column hospitals varchar(255) not null;
+ERROR 1054 (42S22): Unknown column 'hospitals' in 'reciever'
+mysql> alter table recieveralter table hospitals modify column password varchar(255)^C^C
+
+^C
+mysql> alter table hospitals modify column password varchar(255) not null;
+Query OK, 0 rows affected (1.64 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> explain hospitals;
++----------+--------------+------+-----+---------+----------------+
+| Field    | Type         | Null | Key | Default | Extra          |
++----------+--------------+------+-----+---------+----------------+
+| id       | int          | NO   | PRI | NULL    | auto_increment |
+| title    | varchar(255) | NO   |     | NULL    |                |
+| username | varchar(255) | NO   |     | NULL    |                |
+| password | varchar(255) | NO   |     | NULL    |                |
++----------+--------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> explain reciever;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| id         | int          | NO   | PRI | NULL    |       |
+| title      | varchar(255) | NO   |     | NULL    |       |
+| username   | varchar(255) | NO   |     | NULL    |       |
+| password   | varchar(255) | YES  |     | NULL    |       |
+| bloodGroup | int          | NO   | MUL | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql>  alter table reciever modify column password varchar(255) not null;
+Query OK, 0 rows affected (1.94 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from *;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*' at line 1
+mysql> select * from hospitals;
+Empty set (0.00 sec)
+
+mysql> select * from reciever;
+Empty set (0.00 sec)
+
+mysql> select * from reciever;
+Empty set (0.00 sec)
+
+mysql> select * from hospitals;
+Empty set (0.00 sec)
+
+mysql> select * from hospitals;
+Empty set (0.00 sec)
+
+mysql> select * from reciever;
+Empty set (0.00 sec)
+
+mysql> select * from reciever;
+Empty set (0.01 sec)
+
+mysql> select * from hospitals;
++----+-------+-------------------+----------------------------------+
+| id | title | username          | password                         |
++----+-------+-------------------+----------------------------------+
+|  1 | asef  | user2@aresgae.com | fbf1eea21bcc7c141df6a81b1a0b93dc |
+|  2 | asef  | user2@aresgae.com | fbf1eea21bcc7c141df6a81b1a0b93dc |
++----+-------+-------------------+----------------------------------+
+2 rows in set (0.00 sec)
+
+mysql> INSERT INTO reciever (title,username,password,bloodGroup) Values('asef', 'user2@aresgae.com', 'fbf1eea21bcc7c141df6a81b1a0b93dc',1)
+    -> ;
+ERROR 1364 (HY000): Field 'id' doesn't have a default value
+mysql> INSERT INTO reciever (title,username,password,bloodGroup) Values('asef', 'user2@aresgae.com', 'fbf1eea21bcc7c141df6a81b1a0b93dc',1);^C^C
+
+^C
+mysql> show tables;
++---------------------+
+| Tables_in_bloodBank |
++---------------------+
+| hospitalSamples     |
+| hospitals           |
+| reciever            |
+| requests            |
+| samples             |
++---------------------+
+5 rows in set (0.00 sec)
+
+mysql> explain requests;
++------------+------+------+-----+---------+-------+
+| Field      | Type | Null | Key | Default | Extra |
++------------+------+------+-----+---------+-------+
+| recieverId | int  | NO   | PRI | NULL    |       |
+| sampleId   | int  | NO   | PRI | NULL    |       |
+| hospitalId | int  | NO   | PRI | NULL    |       |
+| quantity   | int  | NO   |     | NULL    |       |
++------------+------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> explain hospitalSamples;
++------------+------+------+-----+---------+-------+
+| Field      | Type | Null | Key | Default | Extra |
++------------+------+------+-----+---------+-------+
+| hospitalId | int  | NO   | PRI | NULL    |       |
+| sampleId   | int  | NO   | PRI | NULL    |       |
+| quantity   | int  | YES  |     | 0       |       |
++------------+------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> 
+

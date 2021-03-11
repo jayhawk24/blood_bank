@@ -30,15 +30,15 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="login.html"
+              <a class="nav-link" aria-current="page" href="login.php"
                 >Login</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="register.html">Register</a>
+              <a class="nav-link" href="register.php">Register</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="addInfo.html">Add Info</a>
+              <a class="nav-link active" href="addInfo.php">Add Info</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="availableSamples.html"
@@ -46,65 +46,55 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="viewRequests.html">View Requests</a>
+              <a class="nav-link" href="viewRequests.php">View Requests</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <div class="container-sm mt-5">
+
+    <div class="container-sm mt-4">
+      <h2>Request Samples</h2>
       <form>
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Username</label>
-          <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-          />
-          <div id="emailHelp" class="form-text">
-            We'll never share your email with anyone else.
-          </div>
+          <select
+            class="form-select form-select-sm"
+            aria-label=".form-select-sm example"
+          >
+            <option selected disabled>Hospital</option>
+            <option value="A+">A RhD positive (A+)</option>
+            <option value="A-">A RhD negative (A-)</option>
+            <option value="B+">B RhD positive (B+)</option>
+            <option value="B-">B RhD negative (B-)</option>
+            <option value="O+">O RhD positive (O+)</option>
+            <option value="O-">O RhD negative (O-)</option>
+            <option value="AB+">AB RhD positive (AB+)</option>
+            <option value="AB-">AB RhD negative (AB-)</option>
+          </select>
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-          />
-        </div>
-        <div class="mb-3 d-inline-flex">
-          <div class="form-check m-2">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="flexRadioDefault"
-              id="flexRadioDefault1"
-            />
-            <label class="form-check-label" for="flexRadioDefault1">
-              Hospital
-            </label>
-          </div>
-          <div class="form-check m-2">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="flexRadioDefault"
-              id="flexRadioDefault2"
-              checked
-            />
-            <label class="form-check-label" for="flexRadioDefault2">
-              Reciever
-            </label>
-          </div>
+          <select
+            class="form-select form-select-sm"
+            aria-label=".form-select-sm example"
+          >
+            <option selected disabled>Select Blood Group</option>
+            <option value="A+">A RhD positive (A+)</option>
+            <option value="A-">A RhD negative (A-)</option>
+            <option value="B+">B RhD positive (B+)</option>
+            <option value="B-">B RhD negative (B-)</option>
+            <option value="O+">O RhD positive (O+)</option>
+            <option value="O-">O RhD negative (O-)</option>
+            <option value="AB+">AB RhD positive (AB+)</option>
+            <option value="AB-">AB RhD negative (AB-)</option>
+          </select>
         </div>
         <div class="mb-3">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <label for="quantity" class="form-label">Quantity (Bottles)</label>
+          <input type="number" class="form-control" id="quantity" />
         </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
-
     <!-- JavaScript Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"

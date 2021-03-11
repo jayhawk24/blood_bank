@@ -30,28 +30,68 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="login.html"
+              <a class="nav-link" aria-current="page" href="login.php"
                 >Login</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="register.html">Register</a>
+              <a class="nav-link" href="register.php">Register</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="addInfo.html">Add Info</a>
+              <a class="nav-link" href="addInfo.php">Add Info</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="availableSamples.html"
+              <a class="nav-link active" href="availableSamples.html"
                 >Available Samples</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="viewRequests.html">View Requests</a>
+              <a class="nav-link" href="viewRequests.php">View Requests</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
+    <div class="container-sm mt-4">
+      <h2>Available Samples</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Hospital</th>
+            <th scope="col">Blood Group</th>
+            <th scope="col">Quantity</th>
+            <th>
+              <a href="requestSamples.html">
+                <button class="btn btn-primary">
+                  <nobr> Request Sample </nobr>
+                </button>
+              </a>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry the Bird</td>
+            <td>joe</td>
+            <td>@twitter</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <!-- JavaScript Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
