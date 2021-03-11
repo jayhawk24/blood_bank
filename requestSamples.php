@@ -41,7 +41,7 @@
               <a class="nav-link active" href="addInfo.php">Add Info</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="availableSamples.html"
+              <a class="nav-link" href="availableSamples.php"
                 >Available Samples</a
               >
             </li>

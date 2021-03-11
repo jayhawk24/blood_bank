@@ -117,13 +117,13 @@ mysql> CREATE TABLE `hospitals` (
 Query OK, 0 rows affected, 1 warning (1.06 sec)
 
 mysql> create table `hospitalSamples` (
-    -> `hospitalId` int(11) not null,
-    -> `sampleId` int(11) not null,
-    -> 
-    -> Foreign key (hospitalId) references hospitals(id),
-    -> foreign key (sampleId) references samples(id),
-    -> unique(hospitalId,sampleId)
-    -> );
+    `hospitalId` int(11) not null,
+    `sampleId` int(11) not null,
+    
+    Foreign key (hospitalId) references hospitals(id),
+    foreign key (sampleId) references samples(id),
+    unique(hospitalId,sampleId)
+    );
 Query OK, 0 rows affected, 2 warnings (0.90 sec)
 
 mysql> drop table hospitalSamples

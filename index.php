@@ -1,3 +1,15 @@
+<?php 
+  session_start(); 
+
+  if (!isset($_SESSION['username'])) {
+  	header('location: login.php');
+  }
+  if (isset($_GET['logout'])) {
+  	session_destroy();
+  	unset($_SESSION['username']);
+  	header("location: index.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,6 +25,8 @@
     />
   </head>
   <body>
+
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Blood Bank</a>
@@ -41,17 +55,29 @@
               <a class="nav-link" href="addInfo.php">Add Info</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="availableSamples.html"
+              <a class="nav-link" href="availableSamples.php"
                 >Available Samples</a
               >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="viewRequests.php">View Requests</a>
             </li>
+            <li class="nav-item">
+              <?php  if (isset($_SESSION['username'])) : ?>
+                <p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
+                <p> <a href="index.php?logout='1'">logout</a> </p>
+              <?php endif ?>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
+
+
+  
+    <?php require('server/successMsg.php'); ?>
+
+
     <!-- JavaScript Bundle with Popper -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"

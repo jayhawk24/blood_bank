@@ -1,3 +1,4 @@
+<?php include('server/server.php') ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -41,7 +42,7 @@
               <a class="nav-link" href="addInfo.php">Add Info</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="availableSamples.html"
+              <a class="nav-link" href="availableSamples.php"
                 >Available Samples</a
               >
             </li>
@@ -53,11 +54,12 @@
       </div>
     </nav>
     <div class="container-sm mt-5">
-      <form>
+      <form method="post" action="login.php">
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Username</label>
           <input
             type="email"
+            name="username"
             class="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
@@ -70,6 +72,7 @@
           <label for="exampleInputPassword1" class="form-label">Password</label>
           <input
             type="password"
+            name="password"
             class="form-control"
             id="exampleInputPassword1"
           />
@@ -79,10 +82,12 @@
             <input
               class="form-check-input"
               type="radio"
-              name="flexRadioDefault"
-              id="flexRadioDefault1"
+              name="regType"
+              id="regTypeH"
+              value="hospitals"
+              onclick="checkType()"
             />
-            <label class="form-check-label" for="flexRadioDefault1">
+            <label class="form-check-label" for="hospital">
               Hospital
             </label>
           </div>
@@ -90,18 +95,21 @@
             <input
               class="form-check-input"
               type="radio"
-              name="flexRadioDefault"
-              id="flexRadioDefault2"
+              name="regType"
+              id="regTypeR"
+              value="reciever"
+              onclick="checkType()"
               checked
             />
-            <label class="form-check-label" for="flexRadioDefault2">
+            <label class="form-check-label" for="reciever">
               Reciever
             </label>
           </div>
         </div>
         <div class="mb-3">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary" name="loginUser">Submit</button>
         </div>
+        <?php include('server/errors.php'); ?>
       </form>
     </div>
 

@@ -4,7 +4,6 @@ session_start();
 include('database.php');
 
 $username = "";
-$email = "";
 $errors = array();
 
 if (isset($_POST['registerUser'])){
@@ -42,11 +41,37 @@ if (isset($_POST['registerUser'])){
         $query = "INSERT INTO hospitals (title,username,password) Values('$name', '$username', '$password')";
       }
 
-      mysqli_query($mysqli, $query) or trigger_error("Query Failed! SQL: $query - Error: ".mysqli_error($mysqli), E_USER_ERROR);
+        mysqli_query($mysqli, $query) or trigger_error("Query Failed! SQL: $query - Error: ".mysqli_error($mysqli), E_USER_ERROR);
       
-      $_SESSION['username'] = $username;
+        $_SESSION['username'] = $username;
         $_SESSION['success'] = 'You are logged In...';
         header('location: index.php');
     }
 
+}
+
+if (isset($_POST['loginUser'])) {
+  $username = mysqli_real_escape_string($mysqli, $_POST['username']);
+  $password = mysqli_real_escape_string($mysqli, $_POST['password']);
+  $regType = mysqli_real_escape_string($mysqli, $_POST['regType']);
+
+  if (empty($username)) {
+  	array_push($errors, "Username is required");
+  }
+  if (empty($password)) {
+  	array_push($errors, "Password is required");
+  }
+
+  if (count($errors) == 0) {
+  	$password = md5($password);
+  	$query = "SELECT * FROM $regType WHERE username='$username' AND password='$password'";
+  	$results = mysqli_query($mysqli, $query) or trigger_error("Query Failed! SQL: $query - Error: ".mysqli_error($mysqli), E_USER_ERROR);
+  	if (mysqli_num_rows($results) == 1) {
+  	  $_SESSION['username'] = $username;
+  	  $_SESSION['success'] = "You are now logged in";
+  	  header('location: index.php');
+  	}else {
+  		array_push($errors, "Wrong username/password combination");
+  	}
+  }
 }

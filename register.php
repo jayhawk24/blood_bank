@@ -42,7 +42,7 @@
               <a class="nav-link" href="addInfo.php">Add Info</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="availableSamples.html"
+              <a class="nav-link" href="availableSamples.php"
                 >Available Samples</a
               >
             </li>
@@ -54,7 +54,7 @@
       </div>
     </nav>
     <div class="container-sm mt-5">
-      <form method="post" action="register.php">
+      <form class="row" method="post" action="register.php">
         
 
         <div class="mb-3">
@@ -72,7 +72,7 @@
             We'll never share your email with anyone else.
           </div>
         </div>
-        <div class="mb-3 d-inline">
+        <div class="mb-3 col-md-6">
           <label for="name" class="form-label">Name</label>
           <input
           name="name"
@@ -81,17 +81,24 @@
             id="name"
             aria-describedby="emailHelp"
           />
-          <div id="bloodGroup" class="">
-            <label for="bloodGroup" class="form-label">Blood Group</label>
-            <input
-          name="bloodGroup"
-              type="text"
-              class="form-control"
-              id="bloodGroupInput"
-              aria-describedby="emailHelp"
-            />
-          </div>
         </div>
+
+          <div id="bloodGroup" class="col-md-6">
+            <label for="bloodGroup" class="form-label">Blood Group</label>
+          <select
+            class="form-select form-select-sm"
+            name="bloodGroup"
+            type="text"
+            class="form-control"
+            id="bloodGroupInput"
+            aria-describedby="emailHelp"
+            >
+
+              <?php include('server/getBloodGroup.php') ?>
+
+          </select>
+          </div>
+
         <div class="mb-3">
           <label for="exampleInputPassword1" class="form-label">Password</label>
           <input
