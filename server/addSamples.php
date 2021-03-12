@@ -18,7 +18,7 @@ if (isset($_POST['addSamples'])){
     $qty = mysqli_real_escape_string($mysqli, $_POST['quantity']);
     
     // Get Hospital Id
-    $getHospitalId = "Select * from hospitals where username='$username' LIMIT 1";
+    $getHospitalId = "Select id from hospitals where username='$username' LIMIT 1";
     $res = mysqli_query($mysqli,$getHospitalId) or trigger_error("Query Failed! SQL: $query - Error: ".mysqli_error($mysqli), E_USER_ERROR);
     $user = mysqli_fetch_assoc($res);
     $hId = $user['id'];

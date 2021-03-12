@@ -1,3 +1,4 @@
+<?php include('server/handleRequestSamples.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -55,45 +56,53 @@
 
     <div class="container-sm mt-4">
       <h2>Request Samples</h2>
-      <form>
-        <div class="mb-3">
+      <form  method="post" action="requestSamples.php">
+      <div class="row">
+      
+      <div id="hospital" class="mb-3">
+          <label for="hospital" class="form-label">Hospital Name</label>
           <select
-            class="form-select form-select-sm"
-            aria-label=".form-select-sm example"
-          >
-            <option selected disabled>Hospital</option>
-            <option value="A+">A RhD positive (A+)</option>
-            <option value="A-">A RhD negative (A-)</option>
-            <option value="B+">B RhD positive (B+)</option>
-            <option value="B-">B RhD negative (B-)</option>
-            <option value="O+">O RhD positive (O+)</option>
-            <option value="O-">O RhD negative (O-)</option>
-            <option value="AB+">AB RhD positive (AB+)</option>
-            <option value="AB-">AB RhD negative (AB-)</option>
+            class="form-select form-select"
+            name="hospital"
+            type="text"
+            class="form-control"
+            id="hospitalInput"
+            aria-describedby="emailHelp"
+            >
+              <?php include('server/getHospitals.php') ?>
+
           </select>
-        </div>
-        <div class="mb-3">
+          </div>
+
+        <div id="bloodGroup" class="mb-3">
+          <label for="bloodGroup" class="form-label">Blood Group</label>
           <select
-            class="form-select form-select-sm"
-            aria-label=".form-select-sm example"
-          >
-            <option selected disabled>Select Blood Group</option>
-            <option value="A+">A RhD positive (A+)</option>
-            <option value="A-">A RhD negative (A-)</option>
-            <option value="B+">B RhD positive (B+)</option>
-            <option value="B-">B RhD negative (B-)</option>
-            <option value="O+">O RhD positive (O+)</option>
-            <option value="O-">O RhD negative (O-)</option>
-            <option value="AB+">AB RhD positive (AB+)</option>
-            <option value="AB-">AB RhD negative (AB-)</option>
+            class="form-select form-select"
+            name="bloodGroup"
+            type="text"
+            class="form-control"
+            id="bloodGroupInput"
+            aria-describedby="emailHelp"
+            >
+
+              <?php include('server/getBloodGroup.php') ?>
+
           </select>
-        </div>
-        <div class="mb-3">
+          </div>
+      </div>
+      <div class="row">
+        <div class="mb-3 col-6">
           <label for="quantity" class="form-label">Quantity (Bottles)</label>
-          <input type="number" class="form-control" id="quantity" />
+          <input type="number" class="form-control" id="quantity" name="quantity" />
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+      <div class="mb-3 row">
+        <button name="addRequests" type="submit" class="btn btn-primary col-2">Submit</button>
+      </div>
       </form>
+
+      <?php require('server/successMsg.php'); ?>
+      
     </div>
     <!-- JavaScript Bundle with Popper -->
     <script

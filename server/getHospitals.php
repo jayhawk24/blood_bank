@@ -1,7 +1,7 @@
 <?php
 include('database.php');
 
-$query = "SELECT id,title FROM samples";
+$query = "SELECT id,title FROM hospitals";
 $results = mysqli_query($mysqli, $query) or trigger_error("Query Failed! SQL: $query - Error: ".mysqli_error($mysqli), E_USER_ERROR);
 
 if (mysqli_num_rows($results) > 0) {
