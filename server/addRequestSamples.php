@@ -37,7 +37,7 @@ if (isset($_POST['addRequests'])){
     // If No existing data, Create data
             $query = "INSERT INTO requests (recieverId,sampleId, hospitalId, quantity) Values($rId, $sId, $hId, $qty)";
             mysqli_query($mysqli, $query) or trigger_error("Query Failed! SQL: $query - Error: ".mysqli_error($mysqli), E_USER_ERROR);
-            $_SESSION['success'] = 'Successfully added sample.';
+            $_SESSION['success'] = 'Successfully requested sample.';
         }
 
     header('location: requestSamples.php');

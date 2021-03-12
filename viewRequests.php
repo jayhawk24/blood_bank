@@ -13,45 +13,9 @@
     />
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Blood Bank</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="login.php"
-                >Login</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="register.php">Register</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="addInfo.php">Add Info</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="availableSamples.php"
-                >Available Samples</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="viewRequests.php">View Requests</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    
+  <?php require('server/navbar.php'); ?>
+
     <div class="container-sm mt-4">
       <h2>Requested Samples</h2>
       <table class="table">
