@@ -26,6 +26,8 @@
             <th scope="col">Hospital</th>
             <th scope="col">Blood Group</th>
             <th scope="col">Quantity</th>
+
+            <?php session_start();if($_SESSION['userType'] != 'hospitals') : ?>
             <th>
               <a href="requestSamples.php">
                 <button class="btn btn-primary">
@@ -33,6 +35,7 @@
                 </button>
               </a>
             </th>
+            <?php endif ?>
           </tr>
         </thead>
         <tbody>

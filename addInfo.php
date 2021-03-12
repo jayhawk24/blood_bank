@@ -16,13 +16,13 @@
   <body>
 
   <?php require('server/navbar.php'); ?>
-
+  <?php require('server/successMsg.php'); ?>
 
     <div class="container-sm mt-4">
       <h2>Add Samples</h2>
       <form class="row" method="post" action="addInfo.php">
       <div id="bloodGroup" class="col-md-6">
-            <label for="bloodGroup" class="form-label">Blood Group</label>
+        <label for="bloodGroup" class="form-label">Blood Group</label>
           <select
             class="form-select form-select-sm"
             name="bloodGroup"
@@ -31,11 +31,9 @@
             id="bloodGroupInput"
             aria-describedby="emailHelp"
             >
-
               <?php include('server/getBloodGroup.php') ?>
-
           </select>
-          </div>
+        </div>
         <div class="mb-3 col-md-6">
           <label for="quantity" class="form-label">Quantity (Bottles)</label>
           <input type="number" class="form-control" id="quantity" name='quantity'/>
@@ -44,7 +42,6 @@
         <button type="submit" class="btn btn-primary col-2" name="addSamples" >Submit</button>
       </form>
 
-      <?php require('server/successMsg.php'); ?>
     </div>
 
   </body>

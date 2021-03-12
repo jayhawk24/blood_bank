@@ -1,11 +1,9 @@
 <?php
 session_start();
 if (isset($_SESSION['success'])) : ?>
-    <div class="success mt-4" >
-    	<h4>
+    <div class="alert alert-success" role="alert" >
         <?php 
         	echo $_SESSION['success'];
         ?>
-    	</h4>
     </div>
 <?php endif ?>
