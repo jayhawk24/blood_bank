@@ -41,47 +41,30 @@
               <a class="nav-link" href="addInfo.php">Add Info</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="availableSamples.php"
+              <a class="nav-link" href="availableSamples.php"
                 >Available Samples</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="viewRequests.php">View Requests</a>
+              <a class="nav-link active" href="viewRequests.php">View Requests</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <div class="container-sm">
-      <h2>Requests</h2>
+    <div class="container-sm mt-4">
+      <h2>Requested Samples</h2>
       <table class="table">
         <thead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">Reciever</th>
-            <th scope="col">Blood Group</th>
+            <th scope="col">Requested Blood Group</th>
             <th scope="col">Quantity</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry the Bird</td>
-            <td>joe</td>
-            <td>@twitter</td>
-          </tr>
+          <?php include('server/getRequests.php'); ?>
         </tbody>
       </table>
     </div>

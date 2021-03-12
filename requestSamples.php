@@ -1,4 +1,4 @@
-<?php include('server/handleRequestSamples.php'); ?>
+<?php include('server/addRequestSamples.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
