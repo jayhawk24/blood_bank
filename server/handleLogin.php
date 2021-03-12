@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if (isset($_SESSION['username'])){
+  header('location: index.php');
+}
+
 include('database.php');
 
 $username = "";
@@ -21,11 +25,11 @@ if (isset($_POST['loginUser'])) {
     if (count($errors) == 0) {
         $password = md5($password);
         $query = "SELECT * FROM $regType WHERE username='$username' AND password='$password'";
-        $results = mysqli_query($mysqli, $query) or trigger_error("Query Failed! SQL: $query - Error: ".mysqli_error($mysqli), E_USER_ERROR);
+        $results = mysqli_query($mysqli, $query) ;
         if (mysqli_num_rows($results) == 1) {
           $_SESSION['username'] = $username;
         $_SESSION['userType'] = $regType;
-          $_SESSION['success'] = "You are now logged in";
+          $_SESSION['success'] = "You are logged in";
           header('location: index.php');
         }else {
             array_push($errors, "Wrong username/password combination");

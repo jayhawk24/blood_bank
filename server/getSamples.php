@@ -6,7 +6,7 @@ FROM hospitalSamples
 LEFT JOIN hospitals on hospitals.id = hospitalSamples.hospitalId 
 LEFT JOIN samples on samples.id = hospitalSamples.sampleId";
 
-$results = mysqli_query($mysqli, $query) or trigger_error("Query Failed! SQL: $query - Error: ".mysqli_error($mysqli), E_USER_ERROR);
+$results = mysqli_query($mysqli, $query) ;
 $sno = 1;
 // Get every row of relation table
 

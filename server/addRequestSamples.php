@@ -20,13 +20,13 @@ if (isset($_POST['addRequests'])){
     
     // Get Reciever Id
     $getRecieverId = "Select id from reciever where username='$username' LIMIT 1";
-    $res = mysqli_query($mysqli,$getRecieverId) or trigger_error("Query Failed! SQL: $query - Error: ".mysqli_error($mysqli), E_USER_ERROR);
+    $res = mysqli_query($mysqli,$getRecieverId) ;
     $user = mysqli_fetch_assoc($res);
     $rId = $user['id'];
 
     // Check if existing Reciever has requested sample 
     $query = "SELECT recieverId FROM requests where recieverId=$rId";
-    $res = mysqli_query($mysqli, $query) or trigger_error("Query Failed! SQL: $query - Error: ".mysqli_error($mysqli), E_USER_ERROR);
+    $res = mysqli_query($mysqli, $query) ;
     $remainingQty = mysqli_fetch_assoc($res);
 
     // Exit if already requested  
@@ -36,7 +36,7 @@ if (isset($_POST['addRequests'])){
         else{
     // If No existing data, Create data
             $query = "INSERT INTO requests (recieverId,sampleId, hospitalId, quantity) Values($rId, $sId, $hId, $qty)";
-            mysqli_query($mysqli, $query) or trigger_error("Query Failed! SQL: $query - Error: ".mysqli_error($mysqli), E_USER_ERROR);
+            mysqli_query($mysqli, $query) ;
             $_SESSION['success'] = 'Successfully requested sample.';
         }
 

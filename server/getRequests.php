@@ -13,7 +13,7 @@ session_start();
 // Get Hospital Id
 $username = $_SESSION['username'];
 $getHospitalId = "Select id from hospitals where username='$username' LIMIT 1";
-$res = mysqli_query($mysqli,$getHospitalId) or trigger_error("Query Failed! SQL: $query - Error: ".mysqli_error($mysqli), E_USER_ERROR);
+$res = mysqli_query($mysqli,$getHospitalId) ;
 $user = mysqli_fetch_assoc($res);
 $hId = $user['id'];
 
@@ -25,7 +25,7 @@ $query="SELECT reciever.title as rTitle, samples.title as sTitle, hospitals.titl
         left join hospitals on hospitals.id = requests.hospitalId 
         and requests.hospitalId=$hId where hospitals.title is not null";
 
-$results = mysqli_query($mysqli, $query) or trigger_error("Query Failed! SQL: $query - Error: ".mysqli_error($mysqli), E_USER_ERROR);
+$results = mysqli_query($mysqli, $query) ;
 $sno = 1;
 // Get every row of relation table
 

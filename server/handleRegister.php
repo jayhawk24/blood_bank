@@ -1,6 +1,10 @@
 <?php
 session_start();
 
+if (isset($_SESSION['username'])){
+  header('location: index.php');
+}
+
 include('database.php');
 
 $username = "";
@@ -41,7 +45,7 @@ if (isset($_POST['registerUser'])){
         $query = "INSERT INTO hospitals (title,username,password) Values('$name', '$username', '$password')";
       }
 
-        mysqli_query($mysqli, $query) or trigger_error("Query Failed! SQL: $query - Error: ".mysqli_error($mysqli), E_USER_ERROR);
+        mysqli_query($mysqli, $query) ;
       
         $_SESSION['username'] = $username;
         $_SESSION['userType'] = $regType;
