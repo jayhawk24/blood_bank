@@ -27,12 +27,14 @@
     <?php require('server/navbar.php'); ?>
     <?php require('server/successMsg.php'); ?>
 
-    <div class="container row m-5">
-      <div class="col-6">
-        <h1>Blood <span>Donation</span></h1>
-        <p>If you're a healthy adult, you can usually donate a pint (about half a liter) of blood without endangering your health. Within a few days of a blood donation, your body replaces the lost fluids. And after two weeks, your body replaces the lost red blood cells.</p>
+    <div class="container m-5">
+      <div class="d-flex flex-row flex-wrap">
+        <div class="col-md-6 col-sm-12">
+          <h1>Blood <span>Donation</span></h1>
+          <p>If you're a healthy adult, you can usually donate a pint (about half a liter) of blood without endangering your health. Within a few days of a blood donation, your body replaces the lost fluids. And after two weeks, your body replaces the lost red blood cells.</p>
+        </div>
+        <img class="col-md-6 col-sm-12" src="assets/donation.jpg" alt="">
       </div>
-      <img class="col-6" src="assets/donation.jpg" alt="">
     </div>
   </body>
 </html>
