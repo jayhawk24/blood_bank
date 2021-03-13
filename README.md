@@ -3,6 +3,13 @@
 'Blood bank' web application made with PHP and MySQL  
 Check it out at http://34.198.227.114/
 
+## Init Database
+- `CREATE USER 'bloodBankAdmin'@'localhost' identified by 'securePassword';`
+- `CREATE DATABASE bloodBank CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;`
+- `GRANT ALL ON bloodBank.* to 'bloodBankAdmin'@'localhost';`
+- `exit;`
+- `mysql -u bloodBankAdmin -p bloodBank < mysqlDump.sql`
+
 ## Users
 
 - Hospitals
