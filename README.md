@@ -1,6 +1,7 @@
 # blood_bank
 
-'Blood bank' web application made with PHP and MySQL
+'Blood bank' web application made with PHP and MySQL  
+Check it out at http://34.198.227.114/
 
 ## Users
 
