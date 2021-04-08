@@ -1,6 +1,6 @@
 vendor/
 .env
-server/mysqlCommands.txt
+server/mysql_commands.txt
 # Logs
 logs
 *.log
@@ -105,4 +105,3 @@ dist
 
 # TernJS port file
 .tern-port
-bloodbank.zip

@@ -27,16 +27,24 @@
             
             <?php else:?>
 
-              <?php if ($_SESSION['userType'] != 'reciever') : ?>
+              <?php if ($_SESSION['userType'] === 'hospitals') : ?>
                 <li class="nav-item">
                   <a class="nav-link" href="addInfo.php">Add Info</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="viewRequests.php">View Requests</a>
                 </li>
-              <?php endif ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="viewDonations.php">Donations</a>
+                </li>
 
-          <?php endif ?>
+              <?php elseif ($_SESSION['userType'] === 'donors') : ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="donateSample.php">Donate Sample</a>
+                </li>
+
+              <?php endif ?>
+              <?php endif ?>
 
             <li class="nav-item">
               <a class="nav-link" href="availableSamples.php"

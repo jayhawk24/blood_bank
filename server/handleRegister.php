@@ -37,9 +37,11 @@ if (isset($_POST['registerUser'])){
 
   if (count($errors) == 0){
       $password = md5($pass);
-      echo $regType;
       if ($regType === 'reciever'){
         $query = "INSERT INTO reciever (title,username,password,bloodGroup) Values('$name', '$username', '$password',$bloodGroup)";
+      }
+      elseif ($regType === 'donors') {
+        $query = "INSERT INTO donors (title,username,password) Values('$name', '$username', '$password')";
       }
       else{
         $query = "INSERT INTO hospitals (title,username,password) Values('$name', '$username', '$password')";

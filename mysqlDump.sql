@@ -16,6 +16,64 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `donations`
+--
+
+DROP TABLE IF EXISTS `donations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `donations` (
+  `hospitalId` int NOT NULL,
+  `sampleId` int NOT NULL,
+  `donorId` int NOT NULL,
+  `date` date NOT NULL,
+  `approved` tinyint(1) DEFAULT '0',
+  UNIQUE KEY `donorId` (`donorId`),
+  KEY `hospitalId` (`hospitalId`),
+  KEY `sampleId` (`sampleId`),
+  CONSTRAINT `donations_ibfk_1` FOREIGN KEY (`hospitalId`) REFERENCES `hospitals` (`id`),
+  CONSTRAINT `donations_ibfk_2` FOREIGN KEY (`sampleId`) REFERENCES `samples` (`id`),
+  CONSTRAINT `donations_ibfk_3` FOREIGN KEY (`donorId`) REFERENCES `donors` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `donations`
+--
+
+LOCK TABLES `donations` WRITE;
+/*!40000 ALTER TABLE `donations` DISABLE KEYS */;
+INSERT INTO `donations` VALUES (3,3,1,'2021-04-09',0),(3,3,4,'2021-04-10',0);
+/*!40000 ALTER TABLE `donations` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `donors`
+--
+
+DROP TABLE IF EXISTS `donors`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `donors` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `donors`
+--
+
+LOCK TABLES `donors` WRITE;
+/*!40000 ALTER TABLE `donors` DISABLE KEYS */;
+INSERT INTO `donors` VALUES (1,'sam','donor@test.com','3d939a14c04ae16c98e3bddf6e8e4dd7'),(2,'donor@test.com','donor2@test.com','3d939a14c04ae16c98e3bddf6e8e4dd7'),(3,'donor@test.com','donor2@test.com','3d939a14c04ae16c98e3bddf6e8e4dd7'),(4,'daefa','donor3@test.com','48e45af7ec854316b190e8750bea2eb4');
+/*!40000 ALTER TABLE `donors` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `hospitalSamples`
 --
 
@@ -56,7 +114,7 @@ CREATE TABLE `hospitals` (
   `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +123,7 @@ CREATE TABLE `hospitals` (
 
 LOCK TABLES `hospitals` WRITE;
 /*!40000 ALTER TABLE `hospitals` DISABLE KEYS */;
-INSERT INTO `hospitals` VALUES (1,'asef','user2@aresgae.com','fbf1eea21bcc7c141df6a81b1a0b93dc'),(2,'asef','user2@aresgae.com','fbf1eea21bcc7c141df6a81b1a0b93dc'),(3,'test','test@test.com','098f6bcd4621d373cade4e832627b4f6');
+INSERT INTO `hospitals` VALUES (1,'asef','user2@aresgae.com','fbf1eea21bcc7c141df6a81b1a0b93dc'),(2,'asef','user2@aresgae.com','fbf1eea21bcc7c141df6a81b1a0b93dc'),(3,'test','test@test.com','098f6bcd4621d373cade4e832627b4f6'),(4,'test2','test2@test.com','ad0234829205b9033196ba818f7a872b');
 /*!40000 ALTER TABLE `hospitals` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,4 +220,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-03-12 17:31:14
+-- Dump completed on 2021-04-09  0:17:49

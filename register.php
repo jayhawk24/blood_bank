@@ -83,8 +83,8 @@
             id="exampleInputPassword1"
           />
         </div>
-        <div class="mb-3 d-inline-flex">
-          <div class="form-check m-2">
+        <div class="mb-3 row">
+          <div class="form-check m-3 col-1">
             <input
               class="form-check-input"
               type="radio"
@@ -93,11 +93,11 @@
               value="hospitals"
               onclick="checkType()"
             />
-            <label class="form-check-label" for="flexRadioDefault1">
+            <label class="form-check-label" for="regTypeH">
               Hospital
             </label>
           </div>
-          <div class="form-check m-2">
+          <div class="form-check m-3 col-1">
             <input
               class="form-check-input"
               type="radio"
@@ -107,13 +107,26 @@
               onclick="checkType()"
               checked
             />
-            <label class="form-check-label" for="flexRadioDefault2">
+            <label class="form-check-label" for="regTypeR">
               Reciever
             </label>
           </div>
+          <div class="form-check m-3 col-1">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="regType"
+              id="regTypeD"
+              value="donors"
+              onclick="checkType()"
+              checked
+            />
+            <label class="form-check-label" for="regTypeD">
+              Donor
+            </label>
         </div>
         <div class="mb-3">
-          <button type="submit" class="btn btn-primary" name="registerUser">
+          <button type="submit" class="btn btn-primary btn-md" name="registerUser">
             Submit
           </button>
         </div>

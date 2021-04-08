@@ -19,11 +19,11 @@ $hId = $user['id'];
 
 // Only get request for currently logged in hospital.
 
-$query="SELECT reciever.title as rTitle, samples.title as sTitle, hospitals.title as hTitle, quantity 
-        from requests left join reciever on reciever.id = requests.recieverId 
-        left join samples on samples.id = requests.sampleId 
-        left join hospitals on hospitals.id = requests.hospitalId 
-        and requests.hospitalId=$hId where hospitals.title is not null";
+$query="SELECT donors.title as donor, samples.title as bloodGroup, date
+        from donations inner join donors on donors.id = donations.donorId 
+        inner join samples on samples.id = donations.sampleId 
+        inner join hospitals on hospitals.id = donations.hospitalId 
+        and donations.hospitalId=$hId where hospitals.title is not null";
 
 $results = mysqli_query($mysqli, $query) ;
 $sno = 0;
@@ -33,9 +33,9 @@ if (mysqli_num_rows($results) > 0) {
     while($row = mysqli_fetch_assoc($results)) {
         $sno ++;
         echo "<tr><th scope='row'>" . $sno . "</th>";
-        echo "<td>" . $row['rTitle'] . "</td>" ;
-        echo "<td>" . $row['sTitle'] . "</td>" ;
-        echo "<td>" . $row['quantity'] . "</td></tr>" ;
+        echo "<td>" . $row['donor'] . "</td>" ;
+        echo "<td>" . $row['bloodGroup'] . "</td>" ;
+        echo "<td>" . $row['date'] . "</td>" ;
     }
   }
 else {

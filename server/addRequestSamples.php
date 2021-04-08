@@ -7,7 +7,7 @@ session_start();
     if (!$_SESSION['userType']){
         header('location: login.php');
     }
-    elseif ($_SESSION['userType'] != 'reciever'){
+    elseif ($_SESSION['userType'] === 'hospitals'){
         header('location: 404.html');
     }
 
