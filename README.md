@@ -14,6 +14,7 @@ Check it out at http://34.198.227.114/
 
 - Hospitals
 - Recievers (Users in need of Blood)
+- Donors
 
 ## Functionality
 
@@ -34,3 +35,9 @@ Check it out at http://34.198.227.114/
   - Accessible to everyone.
 - #### View Requests Page
   - Hospital can view list of all people who have requested a particular blood group from its bank.
+- #### Donate Sample
+  - Only accessible to donors where they can donate blood.
+  - Donors can select hospital and select appointment date.
+  - Only one appointment allowed.
+- #### Donations
+  - Only accessible to hospitals who can view interested donors and appointment date. 
